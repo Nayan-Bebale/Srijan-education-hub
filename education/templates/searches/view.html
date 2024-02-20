@@ -1,0 +1,103 @@
+{% include 'header.html' %}
+{% load static %}
+<main>
+
+<section class="slider-area slider-area2">
+    <div class="slider-active slick-initialized slick-slider">
+      <!-- Single Slider -->
+      <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1473px;"><div class="single-slider slider-height2 slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 1473px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-11 col-md-12">
+              <div class="hero__caption hero__caption2">
+                {% if query %}
+                    <h1 data-animation="bounceIn" data-delay="0.2s" class="" style="animation-delay: 0.2s;">You are searching for {{query}}</h1>
+                {% else %}
+                    <div>
+                        <form class="d-flex" action="/search/">
+                        <input class="form-control me-2" type="search" placeholder="Search" name="q" aria-label="Search">
+                        <button class="btn btn-outline-success" style="height: 20px; margin-left: 5px; margin-bottom: 10px;" type="submit">Search</button>
+                        </form>
+                    </div>
+                {% endif %}
+
+                    <!-- breadcrumb Start-->
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="http://127.0.0.1:5500/index.html" tabindex="0">Home</a></li>
+                    <li class="breadcrumb-item"><a href="http://127.0.0.1:5500/resoursce.html#" tabindex="0">about</a></li>
+                  </ol>
+                </nav>
+                <!-- breadcrumb End -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div></div>
+    </div>
+  </section>
+
+  {% for i in blog_list %}
+<!--? About Area-1 Start -->
+<section class="about-area1 fix pt-10">
+  <div class="support-wrapper align-items-center">
+      <div class="left-content1">
+          <div class="about-icon">
+              <img src="{% static 'assets/img/icon/about.svg' %}" alt="">
+          </div>
+          <!-- section tittle -->
+          <div class="section-tittle section-tittle2 mb-55">
+              <div class="front-text">
+                  <h2 class="">{{i.course_name}}</h2>
+                  <p>{{i.course_description}}</p>
+              </div>
+          </div>
+          <div class="single-features">
+              <div class="features-icon">
+                  <img src="{% static 'assets/img/icon/right-icon.svg' %}" alt="">
+              </div>
+              <div class="features-caption">
+                  <p>Course Durations: {{i.course_duration}}
+                  </p>
+              </div>
+          </div>
+          <div class="single-features">
+              <div class="features-icon">
+                  <img src="{% static 'assets/img/icon/right-icon.svg' %}" alt="">
+              </div>
+              <div class="features-caption">
+                  <p>Course Level : {{i.level}}
+                  </p>
+              </div>
+          </div>
+
+          <div class="single-features">
+              <div class="features-icon">
+                  <img src="{% static 'assets/img/icon/right-icon.svg' %}" alt="">
+              </div>
+              <div class="features-caption">
+                  <p>Course instructor: {{i.instructor}}</p>
+                      
+              </div>
+          </div>
+      </div>
+  
+      <div class="right-content1">
+          <!-- img -->
+          <div class="right-content1">
+              <!-- img -->
+              <div class="right-img">
+                  <img src="{{i.course_image}}" alt="">
+
+                  <div class="video-icon" >
+                      <a class="popup-video btn-icon" href="{{i.video_url}}"><i class="fas fa-play"></i></a>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</section>
+{% endfor %}
+</main>
+{% include 'footer.html' %}

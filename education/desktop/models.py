@@ -9,5 +9,5 @@ class Students(models.Model):
     username = models.TextField(max_length=30)
     id_user = models.AutoField(primary_key=True)
     bio = models.TextField(blank=True)
-    profileimg = models.ImageField(upload_to='profile_images/', default='blank-profile-pic.png')
+    profileimg = models.ImageField(upload_to='profile_images/', default='team1.png')
 

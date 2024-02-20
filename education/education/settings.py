@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "ckeditor",
     "desktop",
     "courses",
+    "channels",
+    "chatsystem",
+    "searches",
 ]
 
 MIDDLEWARE = [
@@ -65,13 +69,16 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "desktop.context_processors.job_seeker",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = "education.wsgi.application"
+ASGI_APPLICATION = "education.asgi.application"
 
+# Define the CKEditor upload path
+CKEDITOR_UPLOAD_PATH = "content/ckeditor/"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -129,3 +136,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [('127.0.0.1', 6379)],
+        # }
+    }
+}
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'sigin' 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'coderofml143@gmail.com'
+EMAIL_HOST_PASSWORD = 'uspk hfgg xtux hpgd'
